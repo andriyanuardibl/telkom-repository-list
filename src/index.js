@@ -6,6 +6,11 @@ import { ConfigProvider } from 'antd'
 import store from './redux/store'
 import reportWebVitals from './reportWebVitals'
 
+import 'antd/lib/style/index.less' // antd core styles
+import './@kit/vendors/antd/themes/default.less' // default theme antd components
+import './@kit/vendors/antd/themes/dark.less' // dark theme antd components
+//import './global.scss' // app & third-party component styles
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
