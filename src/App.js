@@ -7,9 +7,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tabs } from 'antd'
+import { Tabs, Card } from 'antd'
 import { GithubRepositoryList } from './redux/actions'
+import List from './components/list'
 import 'antd/dist/antd.css'
+import './App.css'
 
 const { TabPane } = Tabs
 
@@ -40,20 +42,27 @@ class App extends Component {
     render() {
         const { sucGithubRepositoryList } = this.props
 
-        console.log('sucGithubRepositoryList : ', sucGithubRepositoryList)
+        //console.log('sucGithubRepositoryList : ', sucGithubRepositoryList)
 
         return (
-            <Tabs defaultActiveKey="1" onChange={this.handleTabChange}>
-                <TabPane tab="Tab 1" key="1">
-                    Content of Tab Pane 1
-                </TabPane>
-                <TabPane tab="Tab 2" key="2">
-                    Content of Tab Pane 2
-                </TabPane>
-                <TabPane tab="Tab 3" key="3">
-                    Content of Tab Pane 3
-                </TabPane>
-            </Tabs>
+            <div className="site-card-border-less-wrapper">
+                <Card title="Github Repository List" bordered={false} style={{ width: '80%' }}>
+                    <Tabs defaultActiveKey="1" onChange={this.handleTabChange}>
+                        <TabPane tab="Overview" key="1" >
+                            <List page={{ value: 1 }} data={sucGithubRepositoryList}/>
+                        </TabPane>
+                        <TabPane tab="Rpositories" key="2">
+                            <List page={{ value: 2 }} data={sucGithubRepositoryList}/>
+                        </TabPane>
+                        <TabPane tab="Projects" key="3">
+                            Content of Tab Pane 3
+                        </TabPane>
+                        <TabPane tab="Packages" key="4">
+                            Content of Tab Pane 4
+                        </TabPane>
+                    </Tabs>
+                </Card>
+            </div>
         )
     }
 }
